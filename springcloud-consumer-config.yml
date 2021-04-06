@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active:
+      - dev
+---
+spring:
+  http:
+    multipart:
+      maxFileSize: 100Mb
+      maxRequestSize: 100Mb
+  profiles: consumer01
+  application:
+    name: eureka-consumer
+server:
+  port: 8080
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:10001/eureka/,http://127.0.0.1:10002/eureka/
