@@ -1,0 +1,66 @@
+spring:
+  profiles:
+    active:
+      - dev
+  http:
+    multipart:
+      maxFileSize: 100Mb
+      maxRequestSize: 100Mb
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:10001/eureka/,http://127.0.0.1:10002/eureka/
+  instance:
+    hostname: 127.0.0.1
+---
+spring:
+  profiles: redis
+  redis:
+    host: 192.168.217.128
+    port: 6379
+---
+spring:
+  profiles: redis-rabbitmq
+  rabbitmq:
+    host: 192.168.217.128
+    port: 5672
+    username: admin
+    password: admin
+  redis:
+    host: 192.168.217.128
+    port: 6379
+---
+spring:
+  profiles: mysql
+  # 数据库连接信息
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.217.128:3306/document?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+---
+spring:
+  profiles: mysql-redis-rabbitmq
+  rabbitmq:
+    host: 192.168.217.128
+    port: 5672
+    username: admin
+    password: admin
+    redis:
+      host: 192.168.217.128
+      port: 6379
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.217.128:3306/document?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    jpa:
+      hibernate:
+        ddl-auto: update
+      show-sql: true
