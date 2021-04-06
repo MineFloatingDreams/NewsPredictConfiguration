@@ -1,7 +1,7 @@
 spring:
     profiles:
         active:
-        - dev
+        - eureka01
 ---
 server:
     port: 10001
