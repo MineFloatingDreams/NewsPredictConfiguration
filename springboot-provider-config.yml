@@ -31,7 +31,7 @@ spring:
     port: 6379
 ---
 spring:
-  profiles: mysql
+  profiles: jpa
   # 数据库连接信息
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -45,7 +45,7 @@ spring:
     show-sql: true
 ---
 spring:
-  profiles: mysql-redis-rabbitmq
+  profiles: jpa-redis-rabbitmq
   rabbitmq:
     host: 192.168.217.128
     port: 5672
